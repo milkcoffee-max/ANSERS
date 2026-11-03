@@ -1,0 +1,277 @@
+/* ANSERS 홈페이지 공통 스타일
+   모든 좌표는 1920 x 1080 디자인 기준(px)입니다.
+   assets/js/main.js 가 화면 크기에 맞춰 --s(배율)를 계산해 전체를 비율 그대로 확대/축소합니다. */
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("../fonts/PretendardVariable.woff2") format("woff2-variations");
+  font-weight: 45 920;
+  font-display: swap;
+}
+/* 페이퍼로지(Paperlogy): 시안의 영문 제목/메뉴 폰트.
+   PC에 설치되어 있거나 assets/fonts 에 파일을 넣으면 자동 사용되고, 없으면 Montserrat로 대체됩니다. */
+@font-face {
+  font-family: "Paperlogy";
+  src: local("Paperlogy 4 Regular"), local("Paperlogy-4Regular"), local("페이퍼로지 4 Regular"),
+       url("../fonts/Paperlogy-4Regular.woff2") format("woff2"), url("../fonts/Paperlogy-4Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Paperlogy";
+  src: local("Paperlogy 6 SemiBold"), local("Paperlogy-6SemiBold"), local("페이퍼로지 6 SemiBold"),
+       url("../fonts/Paperlogy-6SemiBold.woff2") format("woff2"), url("../fonts/Paperlogy-6SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/montserrat-latin-wght-normal.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --s: 1;
+  --bg: #000;
+  --fg: #fff;
+  --muted: #7d7d7d;
+  --line: #d9d9d9;
+  --font-kr: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-en: "Paperlogy", "Montserrat", "Pretendard", sans-serif;
+  --glow: 0 0 18px rgba(255, 255, 255, .55), 0 0 42px rgba(255, 255, 255, .25);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--bg); scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-kr);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ---------- 고정 비율 스테이지 ---------- */
+.stage {
+  width: 1920px;
+  margin: 0 0 0 var(--mz, 0px);
+  zoom: var(--z, var(--s));   /* 메뉴를 제외한 본문은 화면 기준의 90% 크기 */
+}
+
+/* ---------- 헤더 ---------- */
+.hdr {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: #000;
+  border-bottom: 1px solid var(--line);
+}
+.hdr-in {
+  position: relative;
+  width: 1920px;
+  height: 78px;
+  margin: 0 0 0 var(--mh, 0px);
+  zoom: var(--s);
+}
+.logo { position: absolute; left: 11px; top: 11px; }
+.logo img { width: 212px; height: auto; }
+.nav a {
+  position: absolute;
+  top: 39px;                       /* 헤더(78px) 세로 중앙 */
+  transform: translate(-50%, -50%); /* 각 메뉴 위치 기준 가로·세로 중앙 정렬 */
+  line-height: 1;
+  font-family: var(--font-en);
+  font-size: 22px;
+  font-weight: 400;
+  white-space: nowrap;
+  transition: color .2s;
+}
+.nav a:hover { color: #bdbdbd; }
+.nav a.on { color: var(--muted); }
+
+/* ---------- 섹션 ---------- */
+.sec {
+  position: relative;
+  height: 1080px;
+  overflow: hidden;
+}
+.sec > * { position: absolute; }
+.c { transform: translateX(-50%); text-align: center; white-space: nowrap; }
+.r { text-align: right; white-space: nowrap; }
+.nw { white-space: nowrap; }
+
+.en { font-family: var(--font-en); }
+.glow { text-shadow: var(--glow); }
+.w6 { font-weight: 600; }
+.w5 { font-weight: 500; }
+.w3 { font-weight: 300; }
+.tight { letter-spacing: -1.5px; }
+
+/* 섹션 제목 (밑줄 라벨) */
+.label {
+  font-weight: 600;
+  font-size: 31px;
+  line-height: 1.2;
+  padding: 0 16px 2px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* 아래 화살표 링크 */
+.more {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  font-family: var(--font-en);
+  font-weight: 400;
+  font-size: 31px;
+}
+.more svg { width: 46px; height: 24px; transition: transform .3s; }
+.more:hover svg { transform: translateY(6px); }
+
+/* ---------- 메인 ---------- */
+.hero-word { font-family: var(--font-en); line-height: 1; text-shadow: var(--glow); }
+.hero-word .sm { display: block; font-size: 54px; font-weight: 400; margin-bottom: 8px; }
+.hero-word .lg { display: block; font-size: 78px; font-weight: 600; letter-spacing: -1px; }
+
+/* ---------- 제품 ---------- */
+.big-word { font-family: var(--font-en); font-weight: 600; font-size: 84px; line-height: 1; text-shadow: var(--glow); }
+.spec-table { border-collapse: collapse; font-size: 36px; font-weight: 500; }
+.spec-table td { width: 148px; height: 58px; text-align: center; }
+.spec-table td:first-child { border-right: 2px solid #eee; }
+.spec-table tr + tr td { border-top: 2px solid #eee; }
+
+/* ---------- 응용 ---------- */
+.card {
+  width: 393px; height: 316px;
+  background: #fff;
+  color: #000;
+  border: 2px solid #22305e;
+  display: flex; flex-direction: column; align-items: center;
+}
+.card h3 {
+  margin-top: 12px;
+  font-size: 37px; font-weight: 600;
+  padding: 0 18px 4px;
+  border-bottom: 2px solid #000;
+  white-space: nowrap;
+}
+.card .pic { height: 150px; display: flex; align-items: center; justify-content: center; margin-top: 10px; }
+.card p {
+  margin-top: 14px;
+  font-size: 21px; font-weight: 400; line-height: 1.05;
+  letter-spacing: -1.4px;
+  text-align: center;
+}
+
+/* ---------- 회사소개 ---------- */
+.about-box { background: #fff; color: #000; width: 1542px; height: 331px; }
+.tl-line { width: 3px; background: linear-gradient(#000, #e8e8e8 8%, #e8e8e8 92%, #000); }
+.tl-dot {
+  width: 112px; height: 112px; border-radius: 50%;
+  background: radial-gradient(circle, #fff 0 31px, #6a6a6a 34px, #2a2a2a 50px, rgba(0, 0, 0, 0) 56px);
+}
+.tl-text { font-size: 32px; font-weight: 600; line-height: 1; }
+.pin { width: 0; height: 0; border-left: 14px solid transparent; border-right: 14px solid transparent; border-top: 40px solid #333; }
+.p-line { height: 2px; width: 431px; background: #e5e5e5; }
+.para { font-size: 30px; font-weight: 600; line-height: 38px; }
+
+/* ---------- 애니메이션 (애플 제품 페이지 스타일) ---------- */
+:root { --ease: cubic-bezier(.22, .61, .36, 1); --ease-out: cubic-bezier(.16, 1, .3, 1); }
+
+/* 헤더: 스크롤하면 반투명 블러 */
+.hdr { transition: background-color .4s, border-color .4s; }
+.hdr.scrolled { background: rgba(0, 0, 0, .97); border-color: rgba(255, 255, 255, .25); }
+.nav a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px;
+  background: currentColor; transform: scaleX(0); transform-origin: center;
+  transition: transform .35s var(--ease);
+}
+.nav a:hover::after { transform: scaleX(1); }
+
+
+/* 스크롤 등장: JS가 data-a 종류와 지연(--d)을 지정
+   GPU로 처리되는 opacity / translate / scale 만 움직여서 어느 브라우저에서도 부드럽게 동작 */
+.js .sec > * {
+  opacity: 0;
+  transition:
+    opacity .9s var(--ease) var(--d, 0s),
+    translate 1.1s var(--ease-out) var(--d, 0s),
+    scale 1.2s var(--ease-out) var(--d, 0s);
+}
+.js .sec > [data-a="up"]    { translate: 0 40px; }
+.js .sec > [data-a="blur"]  { translate: 0 40px; }
+.js .sec > [data-a="left"]  { translate: -80px 0; }
+.js .sec > [data-a="right"] { translate: 80px 0; }
+.js .sec > [data-a="zoom"]  { scale: .94; }
+.js .sec > [data-a="pop"]   { scale: .3; transition-timing-function: var(--ease), var(--ease-out), cubic-bezier(.34, 1.56, .64, 1); }
+.js .sec > [data-a="drop"]  { translate: 0 -50px; }
+.js .sec > [data-a="line"]  { scale: 0 1; }
+.js .sec > [data-a="draw"]  { scale: 1 0; transform-origin: top; }
+.js .sec > [data-a="hero"]  { scale: 1.08; transition-duration: 1.6s, 1.6s, 2s; }
+.js .sec > [data-a="none"] { opacity: 1; }
+.js .sec > .in { opacity: 1; translate: 0 0; scale: 1; }
+
+/* 아래 화살표 바운스 */
+.more svg { animation: bob 2.2s ease-in-out infinite; }
+@keyframes bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 8px; } }
+
+
+/* 지도 위 위치 표시 맥동 */
+.pulse { width: 60px; height: 60px; border-radius: 50%; }
+.pulse::before, .pulse::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  border: 2px solid rgba(40, 170, 255, .9);
+  animation: ping 2.4s var(--ease) infinite;
+}
+.pulse::after { animation-delay: 1.2s; }
+@keyframes ping { from { scale: .2; opacity: 1; } to { scale: 2.2; opacity: 0; } }
+
+/* 응용 카드 호버 */
+.card { transition: opacity 1.1s var(--ease) var(--d, 0s), translate 1.3s var(--ease-out) var(--d, 0s), transform .4s var(--ease), box-shadow .4s var(--ease) !important; }
+.card:hover { transform: translateY(-10px); box-shadow: 0 24px 60px rgba(255, 255, 255, .22); }
+.card .pic img { transition: transform .6s var(--ease); }
+.card:hover .pic img { transform: scale(1.06); }
+
+/* 페이지 이동 시 페이드 아웃 */
+.js body.leaving { animation: pageOut .32s var(--ease) forwards; }
+@keyframes pageOut { to { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .more svg, .pulse::before, .pulse::after { animation: none; }
+  .js .sec > * { opacity: 1; translate: none; scale: none; filter: none; transition: none; }
+}
+
+/* ---------- 하단 배너 (메인 제외) ---------- */
+.ftr { padding: 0 148px; border-top: 1px solid #8a8a8a; }  /* 구분선은 본문 폭 전체(화면의 약 90%) */
+.ftr-in {
+  position: relative;
+  height: 118px;
+  display: flex; align-items: center;
+  font-family: var(--font-kr); font-size: 21px; font-weight: 400; line-height: 26px;
+}
+.ftr-logo img { width: 132px; height: auto; }
+.ftr-info { margin-left: 16px; padding-left: 17px; border-left: 2px solid #fff; padding-top: 8px; padding-bottom: 8px; }
+.ftr-copy { margin-left: auto; margin-right: 6px; }
+/* 제품 규격 그림의 라벨 (PPT 글자 그대로) */
+.spec-t { font-size: 22.2px; font-weight: 600; line-height: 1.2; white-space: nowrap; text-shadow: 0 3px 30px rgba(0, 0, 0, .6); }
+.spec-l { background: #fff; transform-origin: left center; }
+/* 제품 수치 (PPT 텍스트 레이어 그대로) */
+.stat { font-weight: 600; font-size: 88px; line-height: 90px; text-shadow: 3px 3px 30px rgba(0, 0, 0, .45); }
+.stat span { display: block; font-size: 32px; }
+.stat sup { font-size: .6em; vertical-align: .55em; line-height: 0; }
+.stat-s { font-weight: 600; font-size: 40px; line-height: 1.2; text-shadow: 3px 3px 30px rgba(0, 0, 0, .45); }
+.stat-arrow { overflow: visible; filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, .4)); }
+/* 제품 규격 화면: 시안(PDF)과 같은 비율 (PPT 기준 92.7%) */
+.spec-h { font-size: 33.4px; line-height: 1.2; }
+.spec-c { font-size: 22.2px; font-weight: 500; line-height: 1.2; }
+#p3 .spec-table { font-size: 33.4px; }
+#p3 .spec-table td { width: 138.3px; height: 54.1px; }
+/* 밑줄 링크 (Applications의 Learn more: 눌러야만 Technology로 이동) */
+.link-u {
+  font-family: var(--font-en); font-weight: 400; font-size: 31px; line-height: 1.2;
+  padding-bottom: 4px; border-bottom: 1.5px solid #fff;
+  transition: color .2s, border-color .2s;
+}
+.link-u:hover { color: #bdbdbd; border-color: #bdbdbd; }
