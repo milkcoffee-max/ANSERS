@@ -6,27 +6,27 @@
   font-family: "Pretendard";
   src: url("../fonts/PretendardVariable.woff2") format("woff2-variations");
   font-weight: 45 920;
-  font-display: swap;
+  font-display: block;
 }
 @font-face {
   font-family: "Paperlogy";
   src: local("Paperlogy 4 Regular"), local("Paperlogy-4Regular"), local("페이퍼로지 4 Regular"),
        url("../fonts/Paperlogy-4Regular.woff2") format("woff2");
   font-weight: 400;
-  font-display: swap;
+  font-display: block;
 }
 @font-face {
   font-family: "Paperlogy";
   src: local("Paperlogy 6 SemiBold"), local("Paperlogy-6SemiBold"), local("페이퍼로지 6 SemiBold"),
        url("../fonts/Paperlogy-6SemiBold.woff2") format("woff2");
   font-weight: 600;
-  font-display: swap;
+  font-display: block;
 }
 @font-face {
   font-family: "Montserrat";
   src: url("../fonts/montserrat-latin-wght-normal.woff2") format("woff2-variations");
   font-weight: 100 900;
-  font-display: swap;
+  font-display: block;
 }
 
 :root {
